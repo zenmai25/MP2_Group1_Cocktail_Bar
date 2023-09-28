@@ -1,7 +1,7 @@
 <%-include('header') -%>
 
 <header>
-    <h1>Cocktail Menu</h1>
+    <img class="brand-logo" src="/static/assets/the-fizz-smiths-logo.png" width="100px">
     
     <ul class="navbar-nav">
       <input type="text" id="searchInput" placeholder="Search cocktails">
@@ -10,6 +10,18 @@
             <a class="nav-link" href="/dashboard">Home</a>
         </li>
         <li class="nav-item">
+            <li>Category</li>
+            <div class="dropdown">
+                <button class="dropbtn">&#9660;</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="filterByCategory('Cocktail')">Classics</a>
+                    <a href="#" onclick="filterOrdinaryCocktails('Ordinary')">Ordinary</a>
+                    <a href="#" onclick="filterNonAlcoholicCocktails('Non_Alcoholic')">Non Alcoholic</a>
+                    <a href="#" onclick="filterChampangeCocktails('Champagne_flute')">Champange</a>
+                    <a href="#" onclick="filterVodkaCocktails('Vodka')">Vodka</a>
+                    <a href="#" onclick="filterGinCocktails('Gin')">Gin</a>
+                </div>
+            </div>
             <li><%= locals.user?user: 'No email found' %></li>
             <div class="dropdown">
                 <button class="dropbtn">&#9660;</button>
@@ -21,10 +33,12 @@
     </ul>
 </header>
 <main>
-    <h1 id="random">Random Cocktails</h1>
+    
     <div class="cocktail-grid" id="cocktailList"></div>
+
+    
 </main>
-<!-- <div id="cocktailDetails"></div> -->
+
 <div id="cocktailDetailsContainer">
     <div id="cocktailDetails"></div>
 </div>

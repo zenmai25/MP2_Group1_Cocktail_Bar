@@ -8,7 +8,7 @@ const cocktailDetails = document.getElementById("cocktailDetails");
 // Function to fetch and display random cocktails
 async function fetchAndDisplayRandomCocktails() {
   const cocktails = [];
-  while (cocktails.length < 12) {
+  while (cocktails.length < 20) {
       try {
           const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
           if (!response.ok) {
@@ -43,7 +43,6 @@ function displayCocktails(cocktails) {
 
 function showCocktailDetails(cocktail) {
     // Hide the dashboard content
-    document.getElementById("random").style.display = "none";
     document.getElementById("cocktailList").style.display = "none";
 
     // Show the cocktail details container
@@ -100,3 +99,130 @@ async function searchCocktails(searchTerm) {
 
 // Initial random cocktails when the page loads
 fetchAndDisplayRandomCocktails();
+
+
+
+// Api for Catergory
+async function fetchCocktailsByCategory(category) {
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
+        if (!response.ok) {
+            throw new Error("NETWORK RESPONSE ERROR");
+        }
+        const data = await response.json();
+        displayCocktails(data.drinks);
+    } catch (error) {
+        console.error("FETCH ERROR:", error);
+    }
+}
+
+function filterByCategory(category) {
+    fetchCocktailsByCategory(category);
+}
+
+
+// API for Ordinary Drink
+async function fetchOrdinaryCocktails(category) {
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
+        if (!response.ok) {
+            throw new Error("NETWORK RESPONSE ERROR");
+        }
+        const data = await response.json();
+        displayCocktails(data.drinks);
+    } catch (error) {
+        console.error("FETCH ERROR:", error);
+    }
+}
+
+function filterOrdinaryCocktails() {
+    fetchOrdinaryCocktails("Ordinary_Drink"); 
+}
+
+// Example usage:
+filterOrdinaryCocktails(); 
+
+// API for Non-Alcoholic Drink
+async function fetchNonAlcoholicCocktails(category) {
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${category}`);
+        if (!response.ok) {
+            throw new Error("NETWORK RESPONSE ERROR");
+        }
+        const data = await response.json();
+        displayCocktails(data.drinks);
+    } catch (error) {
+        console.error("FETCH ERROR:", error);
+    }
+}
+
+function filterNonAlcoholicCocktails() {
+    fetchNonAlcoholicCocktails("Non_Alcoholic"); 
+}
+
+// Example usage:
+filterNonAlcoholicCocktails(); 
+
+// API for Champagne Drink
+async function fetchChampangeCocktails(category) {
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${category}`);
+        if (!response.ok) {
+            throw new Error("NETWORK RESPONSE ERROR");
+        }
+        const data = await response.json();
+        displayCocktails(data.drinks);
+    } catch (error) {
+        console.error("FETCH ERROR:", error);
+    }
+}
+
+function filterChampangeCocktails() {
+    fetchChampangeCocktails("Champagne_flute"); 
+}
+
+// Example usage:
+filterChampangeCocktails(); 
+
+// API for Vodka Drink
+async function fetchVodakaCocktails(category) {
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${category}`);
+        if (!response.ok) {
+            throw new Error("NETWORK RESPONSE ERROR");
+        }
+        const data = await response.json();
+        displayCocktails(data.drinks);
+    } catch (error) {
+        console.error("FETCH ERROR:", error);
+    }
+}
+
+function filterVodkaCocktails() {
+    fetchVodakaCocktails("Vodka"); 
+}
+
+// Example usage:
+filterVodkaCocktails(); 
+
+// API for Vodka Drink
+async function fetchGinCocktails(category) {
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${category}`);
+        if (!response.ok) {
+            throw new Error("NETWORK RESPONSE ERROR");
+        }
+        const data = await response.json();
+        displayCocktails(data.drinks);
+    } catch (error) {
+        console.error("FETCH ERROR:", error);
+    }
+}
+
+function filterGinCocktails() {
+    fetchGinCocktails("Gin"); 
+}
+
+// Example usage:
+filterGinCocktails(); 
+
